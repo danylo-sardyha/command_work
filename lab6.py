@@ -12,14 +12,21 @@ class FileCorrupted(Exception):
 
 
 def logged(exc_type, mode="console"):
-    logger = logging.getLogger("xml_logger")
+    logger_name = f"xml_logger_{mode}"
+    logger = logging.getLogger(logger_name)
     logger.setLevel(logging.ERROR)
+    logger.propagate = False  
+
     if not logger.handlers:
-        handler = (
-            logging.FileHandler("log.txt", encoding="utf-8")
-            if mode == "file"
-            else logging.StreamHandler()
+        if mode == "file":
+            handler = logging.FileHandler("log.txt", encoding="utf-8")
+        else:
+            handler = logging.StreamHandler()
+
+        formatter = logging.Formatter(
+            "%(asctime)s - %(levelname)s - %(message)s"
         )
+        handler.setFormatter(formatter)
         logger.addHandler(handler)
 
     def decorator(func):
@@ -30,7 +37,9 @@ def logged(exc_type, mode="console"):
                 logger.error(f"[{func.__name__}] {e}")
                 raise
         return wrapper
+
     return decorator
+
 
 
 class XMLFileManager:
