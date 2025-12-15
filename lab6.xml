@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<movies><film1>
+        <title>Inception</title>
+        <year>2010</year>
+        <rating>8.8</rating>
+    </film1>
+
+    <film2>
+        <title>The Matrix</title>
+        <year>1999</year>
+        <rating>8.7</rating>
+    </film2>
+
+    <film3>
+        <title>Interstellar</title>
+        <year>2014</year>
+        <rating>8.6</rating>
+    </film3>
+<film4><title>Avatar</title><year>2009</year><rating>7.8</rating></film4><film4><title>Avatar</title><year>2009</year><rating>7.8</rating></film4><film4><title>Test Film</title><year>2022</year><rating>7.3</rating></film4><film4>Test Film</film4><film4>Test Film</film4></movies>
